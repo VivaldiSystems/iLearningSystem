@@ -99,7 +99,7 @@ if(getCookie("schoolno") == "" ){
                         
              
               <div class="list-group">  
-             
+              <a href="smart_admin_classes.php" class="list-group-item">
               <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;School Events
               <i class="fa fa-chevron-right list-group-chevron"></i>
               </a>  
