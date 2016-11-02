@@ -19,7 +19,7 @@
               
             <div class="portlet">
                 <h4 class="portlet-title">
-                    <u>Student Registration</u>
+                    <u>School Search</u>
                 </h4> 
                 
               <!-- Info Panel  -->
@@ -51,16 +51,12 @@
               <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Classes
               <i class="fa fa-chevron-right list-group-chevron"></i><span class="badge">{$NumberOfClasses}</span>
               </a>
-               <a href="smart_admin_schoolevents.php" class="list-group-item">
-              <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;School Events
+               <a href="smart_admin_events.php" class="list-group-item">
+              <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Class Events
               <i class="fa fa-chevron-right list-group-chevron"></i>
-              </a>        
+              </a>      
               
-              <a href="smart_account_activelessons.php" class="list-group-item">
-              <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Active Lessons
-
-              <i class="fa fa-chevron-right list-group-chevron"></i><span class="badge">{$NumberOfClassLessons}</span>
-            </a> 
+              
                
               <a href="smart_admin_parents.php" class="list-group-item">
               <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Active Parents
@@ -95,12 +91,11 @@
             <div class="portlet">
 
                     <!-- Column Header -->
-                 <h3 class="portlet-title">
+                <h3 class="portlet-title">
                     
-                    <a href="index.php" class="fa fa-bars" style="font-size:16px" >Home</a>&nbsp;&nbsp;
-                    <a href="account-classadd.php" class="fa fa-bars" style="font-size:16px" >Add New Class</a>&nbsp;&nbsp;
-                    <a href="account-classes-Advanced.php" class="fa fa-bars" style="font-size:16px" >Advanced View</a>&nbsp;&nbsp;
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#faq-general-1">                      <label for="UserName"  id="UserName" style="font-size:12px"> Advanced Search</label></a>
+                    <a href="index.php" class="fa fa-bars" style="font-size:16px"  >Home</a>&nbsp;&nbsp;
+                    <a href="smart_account-schooladd.php" style="font-size:16px" class="fa fa-bars">Add New School</a>&nbsp;&nbsp;
+                   
                 </h3>
                     <!-- End Column Header -->
                     
@@ -243,14 +238,16 @@
    }
 
 </style>
-                    <!-- Search Table -->    
-                <div class="portlet-body">
+                   
+<div class="portlet-body">
 
-           
-						  
-	                    {$myDatagridTable}    
-                     
 
+             
+         {$myDatagridTable}             
+                   
+                    
+                    
+                    
                 </div>
                     <!-- End Search Table -->    
 
@@ -258,9 +255,6 @@
 
           </div>
                 <!-- End Right Column -->
-    
-    
-    
     
     
   </div>

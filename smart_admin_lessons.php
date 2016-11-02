@@ -353,15 +353,9 @@ sqlsrv_free_stmt( $stmt);
 
 
 //Create The counts for the left Menu
-/* Execute the query. */
-if( $_COOKIE['schoolteacher'] == "0" )
-{
-$tsql = "Select count(*) As recordcount from class where SchoolNo  = '".$SchoolNoLocal."'  And classyears = '".$_COOKIE['schoolyear']."' AND SEMESTER = '".$_COOKIE['schoolterm']."'";     
-}
-else
-{
-    $tsql = "Select count(*) As recordcount from class where SchoolNo  = '".$SchoolNoLocal."'  And classyears = '".$_COOKIE['schoolyear']."' AND SEMESTER = '".$_COOKIE['schoolterm']."' AND TEACHERNO = '".$_COOKIE['schoolteacher']."' "; 
-}
+/* Execute the query. */     
+$tsql = "Select count(*) As recordcount from class where SchoolNo  = '".$SchoolNoLocal."'  And classyears = '".$_COOKIE['schoolyear']."' AND SEMESTER = '".$_COOKIE['schoolterm']."' AND TEACHERNO = '".$_COOKIE['schoolteacher']."' ";     
+  
 
 $stmt = sqlsrv_query( $conn, $tsql);     
         
@@ -447,24 +441,20 @@ while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC))
 sqlsrv_free_stmt( $stmt);
 
 if( $_COOKIE['schoolteacher'] == "0" )
-{   
-$tsql = "Select lessonno,classno,lesson,chapterno,standard,(Select Teacher.name from teacher where teacher.teacherno = lesson.teacherno) as teacher,CONVERT(VARCHAR(10),startdate,110) as startdate1,
+{
+  $tsql = "Select ClassNo,Code,Class,(Select Name from Teacher where Teacher.TeacherNo = Class.TeacherNo) As Teacher,Room,Period,ExtendedCode from class where SchoolNo  = '".$SchoolNoLocal."'  And classyears = '".$_COOKIE['schoolyear']."' AND SEMESTER = '".$_COOKIE['schoolterm']."'  ORDER BY Code ";   
+}
+else
+{
+
+    
+$tsql = "Select lessonno,classno,lesson,chapterno,standard,(Select Teacher.name from teacher where teacher.teacherno = lesson.teacherno) as Teacher,CONVERT(VARCHAR(10),startdate,110) as startdate1,
 CONVERT(VARCHAR(10),duedate,110) as duedate1,objective from lesson
  where 0 < (Select Count(*) from Class where class.SchoolNo  = '".$SchoolNoLocal."'  And class.classyears = '".$_COOKIE['schoolyear']."' 
  AND class.SEMESTER = '".$_COOKIE['schoolterm']."' and class.classno = lesson.classno )
 ORDER BY lesson.lessonno ";     
- }
-else
-{   
-$tsql = "Select lessonno,classno,lesson,chapterno,standard,(Select Teacher.name from teacher where teacher.teacherno = lesson.teacherno) as teacher,CONVERT(VARCHAR(10),startdate,110) as startdate1,
-CONVERT(VARCHAR(10),duedate,110) as duedate1,objective from lesson
- where  TEACHERNO = '".$_COOKIE['schoolteacher']."'  and 0 < (Select Count(*) from Class where class.SchoolNo  = '".$SchoolNoLocal."'  And class.classyears = '".$_COOKIE['schoolyear']."' 
- AND class.SEMESTER = '".$_COOKIE['schoolterm']."' and class.classno = lesson.classno )
-ORDER BY lesson.lessonno ";  
+    
 
-    
-    
-}
 
 $stmt = sqlsrv_query( $conn, $tsql );
 
@@ -496,13 +486,13 @@ while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC))
   	
 	$data  = $data . "<tr class='special' style='font-size:10px'><th style='width: 10%'><a href='javascript:OpenClassView(".$row[0].");' >".$row[0]."</a></th>";
 	$data  = $data . "<th style='width: 10%'>".$row[1]."</th>";
-	$data  = $data . "<th style='width: 15%'>".$row[2]."</th>";
-	$data  = $data . "<th style='width: 10%'>".$row[3]."</th>";
+	$data  = $data . "<th style='width: 35%'>".$row[2]."</th>";
+	$data  = $data . "<th style='width: 15%'>".$row[3]."</th>";
 	$data  = $data . "<th style='width: 10%'>".$row[4]."</th>";
+    $data  = $data . "<th style='width: 10%'>".$row[4]."</th>";
+	$data  = $data . "<th style='width: 10%'>".$row[5]."</th>";
     $data  = $data . "<th style='width: 10%'>".$row[5]."</th>";
-	$data  = $data . "<th style='width: 10%'>".$row[6]."</th>";
-    $data  = $data . "<th style='width: 10%'>".$row[7]."</th>";
-    $data  = $data . "<th style='width: 35%'>".$row[8]."<th></tr>";	
+    $data  = $data . "<th style='width: 10%'>".$row[6]."<th></tr>";	
 	
 	
 	
@@ -522,7 +512,7 @@ sqlsrv_close( $conn);
 
 
 
-$smarty->display('smart_admin_lessons.tpl');
+$smarty->display('smart_admin_classes.tpl');
 
 
 

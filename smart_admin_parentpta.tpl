@@ -19,7 +19,7 @@
               
             <div class="portlet">
                 <h4 class="portlet-title">
-                    <u>Student Registration</u>
+                    <u>PTA Parents Search</u>
                 </h4> 
                 
               <!-- Info Panel  -->
@@ -54,7 +54,7 @@
                <a href="smart_admin_schoolevents.php" class="list-group-item">
               <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;School Events
               <i class="fa fa-chevron-right list-group-chevron"></i>
-              </a>        
+              </a>       
               
               <a href="smart_account_activelessons.php" class="list-group-item">
               <i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Active Lessons

@@ -19,7 +19,7 @@
               
             <div class="portlet">
                 <h4 class="portlet-title">
-                    <u>Student Registration</u>
+                    <u>Student Search</u>
                 </h4> 
                 
               <!-- Info Panel  -->
